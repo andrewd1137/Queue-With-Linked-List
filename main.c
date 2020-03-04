@@ -13,7 +13,7 @@ struct customer *head;
 
 int main() {
     int menu = 0;
-    head = NULL;
+    head = NULL; //start off empty
     char firstName[50];
 
     while (menu != 3) {
@@ -39,12 +39,15 @@ void addCustomerNames(char fName[50]){
     struct customer *current;
     struct customer *tail = malloc(sizeof(struct customer));
 
-    tail->next = NULL;
-    strcpy(tail->name, fName);
-
+    tail->next = NULL; //tail is the end of the list
+    strcpy(tail->name, fName); //next element is going at the end of the list
+    
+    //this is the first element being added to the list
     if(head == NULL){
-        head = tail;
-    } else{
+        head = tail; 
+    } 
+    else{
+        //go through the list until you get to the tail and then add the item at the end
         current = head;
         while(current->next != NULL){
             current = current->next;
@@ -55,11 +58,12 @@ void addCustomerNames(char fName[50]){
 
 void printCustomerNames(){
     struct customer *custPointer = head;
-
+    //empty list
     if(custPointer == NULL){
         printf("The list is empty.\n\n");
     }
     else {
+        //prints the customer list with every element 
         printf("\nCustomer List:\n");
     }
     while (NULL != custPointer) {
